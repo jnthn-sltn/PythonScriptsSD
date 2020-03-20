@@ -1,0 +1,241 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May 28 14:06:33 2019
+
+@author: joslaton
+"""
+
+import skrf as rf
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+#%%       
+
+p_string =r"J:\joslaton\WOLF\AZTEC_ES5p2\S-Parameters"
+output_path = r"J:\joslaton\WOLF\AZTEC_ES5p2\S-Parameters\ALL"
+states = ['LS_TX_IN1_TX_OUT1',
+          'LS_TX_IN1_TX_OUT2']
+temperatures = ['-35C','25C','85C']
+voltages = ['3p00',
+            '3p80',
+            '4p90']
+
+s_dict = dict(zip(states,range(len(states))))
+rev_sdict = dict(zip(range(len(states)),states))
+t_dict = dict(zip(temperatures,range(len(temperatures))))
+rev_tdict = dict(zip(range(len(temperatures)),temperatures))
+v_dict = dict(zip(voltages,range(len(voltages))))
+rev_vdict = dict(zip(range(len(voltages)),voltages))
+
+il_dict = {0:'s31',
+           1:'s41'}
+ 
+
+serials = ['SN1','SN4','SN5']
+#%%
+###############################################################################
+
+class rf_record:
+   def __init__(self,state,temperature,voltage,serial):
+        self.state = state
+        self.temperature = temperature
+        self.voltage = voltage
+        self.serial = serial
+        self.path = p_string + '\\' + state + '\\' + temperature + '\\' + voltage + '\\' + serial + '.s4p'
+        self.rfobj = rf.Network(self.path)
+        self.row = v_dict[self.voltage]
+        self.col = t_dict[self.temperature]
+        self.rfobj.frequency.unit='ghz'
+        self.iso_out_out = self.rfobj.s34
+        self.iso_in_in = self.rfobj.s12
+        if s_dict[self.state]==0:
+            self.insertion_loss = self.rfobj.s31
+            self.iso_io_label = 'ISO IN1-OUT2'
+            self.iso_oi_label = 'ISO IN2-OUT1'
+            self.iso_in_out = self.rfobj.s14
+            self.iso_out_in = self.rfobj.s32
+        elif s_dict[self.state]==1:
+            self.insertion_loss = self.rfobj.s41
+            self.iso_io_label = 'ISO IN1-OUT1'
+            self.iso_oi_label = 'ISO IN2-OUT2'
+            self.iso_in_out = self.rfobj.s13
+            self.iso_out_in = self.rfobj.s42
+        
+###############################################################################
+#%%
+a = []
+
+for state in states:
+    for temperature in temperatures:
+        for voltage in voltages:
+            for serial in serials:
+                a += [rf_record(state,temperature,voltage,serial)]
+#%%
+b = [rec for rec in a]# if all([rec.serial!='SN1',rec.serial!='SN2'])]
+
+fig_0, axes_0 = plt.subplots(3, 3)
+fig_1, axes_1 = plt.subplots(3, 3)
+
+fig_0.suptitle('IN1_OUT1: Insertion Loss')
+fig_1.suptitle('IN1_OUT2: Insertion Loss')
+
+fig_lst = [fig_0,fig_1]#,fig_2,fig_3]
+
+ax_lst = [axes_0,axes_1]#,axes_2,axes_3]
+
+for ax in ax_lst:
+    for i in range(3):
+        for j in range(3):
+            ax[i,j].set_title('Voltage: ' + rev_vdict[i] + ', Temp: ' + rev_tdict[j])
+            ax[i,j].plot(range(10000000,6100000000,5000000),[-1]*1218,'r',label='Spec_Line')
+            #ax[i,j].set_ylim(bottom=-1.2,top=-0.3)
+
+    
+#%%
+#Insertion Loss Plotter
+for el in b:
+    el.insertion_loss['0.01-6.1ghz'].plot_s_db(ax=ax_lst[s_dict[el.state]][el.row,el.col],label=el.serial+', IL')
+
+#%%
+for ax in ax_lst:
+    for i in range(3):
+        for j in range(3):
+            ax[i,j].set_ylim(bottom=-1.2,top=-0.3)
+            #ax[i,j].legend().remove()
+
+for fig in fig_lst:
+    fig.set_size_inches((18.81,9.3),forward=False)
+    fig.subplots_adjust(top=0.928,bottom=0.061,left=0.041,right=0.99,hspace=0.338,wspace=0.147)
+    fig.savefig(output_path +'\\'+ fig.texts[0].get_text().replace(': ',' - ') + '.jpg')
+
+#%%
+plt.close(fig='all')
+
+            
+#%%
+b = [rec for rec in a]# if all([rec.serial!='SN1',rec.serial!='SN2'])]
+
+fig_0, axes_0 = plt.subplots(3, 3)
+fig_1, axes_1 = plt.subplots(3, 3)
+
+fig_0.suptitle('IN1_OUT1: Iso')
+fig_1.suptitle('IN1_OUT2: Iso')
+
+fig_lst = [fig_0,fig_1]#,fig_2,fig_3]
+
+ax_lst = [axes_0,axes_1]#,axes_2,axes_3]
+
+for ax in ax_lst:
+    for i in range(3):
+        for j in range(3):
+            ax[i,j].set_title('Voltage: ' + rev_vdict[i] + ', Temp: ' + rev_tdict[j])
+            ax[i,j].plot(range(10000000,6100000000,5000000),[-30]*1218,linestyle=':',color='r',label='Spec_Line_30dB')
+            ax[i,j].plot(range(10000000,6100000000,5000000),[-55]*1218,linestyle=':',color='r',label='Spec_Line_55dB')
+            #ax[i,j].set_ylim(bottom=-1.2,top=-0.3)
+
+#%%
+
+for el in b:
+    el.iso_out_out['0.01-6.1ghz'].plot_s_db(ax=ax_lst[s_dict[el.state]][el.row,el.col],label=el.serial+', ISO OUT1-OUT2')
+    el.iso_in_in['0.01-6.1ghz'].plot_s_db(ax=ax_lst[s_dict[el.state]][el.row,el.col],label=el.serial+', ISO IN1-IN2')
+    el.iso_in_out['0.01-6.1ghz'].plot_s_db(ax=ax_lst[s_dict[el.state]][el.row,el.col],label=el.serial+', '+ el.iso_io_label)
+    el.iso_out_in['0.01-6.1ghz'].plot_s_db(ax=ax_lst[s_dict[el.state]][el.row,el.col],label=el.serial+', '+ el.iso_oi_label)
+    
+    
+
+
+#%%
+for ax in ax_lst:
+    for i in range(3):
+        for j in range(3):
+            ax[i,j].set_ylim(bottom=-80,top=-20)
+            ax[i,j].legend(loc='lower right',fontsize='xx-small').remove()
+#%%
+for fig in fig_lst:
+    fig.set_size_inches((18.81,9.3),forward=False)
+    fig.subplots_adjust(top=0.928,bottom=0.061,left=0.041,right=0.99,hspace=0.338,wspace=0.147)
+    fig.savefig(output_path +'\\'+ fig.texts[0].get_text().replace(': ',' - ') + '.jpg')
+
+#%%
+plt.close(fig='all')
+#%%
+
+nominal = [rec for rec in a if all([rec.serial!='SN4',rec.temperature==rev_tdict[1],rec.voltage==rev_vdict[1]])]
+wc = [rec for rec in a if all([rec.serial!='SN4',rec.temperature==rev_tdict[2],rec.voltage==rev_vdict[0]])]
+
+
+#%%
+nom_ary = np.zeros([2,6])
+wc_ary = np.zeros([2,6])
+
+
+i1o1 = rf.average([rec.rfobj for rec in nominal if (rec.state==rev_sdict[0])])
+i1o2 = rf.average([rec.rfobj for rec in nominal if (rec.state==rev_sdict[1])])
+k = 0
+for ntwrk in [i1o1,i1o2]:
+    nom_ary[k,:] = [ntwrk.s31['2.7GHz'].s_db[0,0,0],
+                    ntwrk.s32['2.7GHz'].s_db[0,0,0],
+                    ntwrk.s41['2.7GHz'].s_db[0,0,0],
+                    ntwrk.s42['2.7GHz'].s_db[0,0,0],
+                    ntwrk.s21['2.7GHz'].s_db[0,0,0],
+                    ntwrk.s43['2.7GHz'].s_db[0,0,0]]
+    k+=1
+
+
+#%%
+
+i1o1 = rf.average([rec.rfobj for rec in wc if (rec.state==rev_sdict[0])])
+i1o2 = rf.average([rec.rfobj for rec in wc if (rec.state==rev_sdict[1])])
+k = 0
+for ntwrk in [i1o1,i1o2]:
+    wc_ary[k,:] = [ntwrk.s31['2.7GHz'].s_db[0,0,0],
+                    ntwrk.s32['2.7GHz'].s_db[0,0,0],
+                    ntwrk.s41['2.7GHz'].s_db[0,0,0],
+                    ntwrk.s42['2.7GHz'].s_db[0,0,0],
+                    ntwrk.s21['2.7GHz'].s_db[0,0,0],
+                    ntwrk.s43['2.7GHz'].s_db[0,0,0]]
+    k+=1
+
+
+#%%
+np.savetxt(output_path + '\\' + 'Nominal Small Signal.txt',nom_ary,delimiter=',')
+np.savetxt(output_path + '\\' + 'WC Small Signal.txt',wc_ary,delimiter=',')
+
+#%%
+
+nom_il = [-1*np.min(ntwrk.insertion_loss['0.01-2.7GHz'].s_db[:,0,0]) for ntwrk in nominal]
+wc_il = [-1*np.min(ntwrk.insertion_loss['0.01-2.7GHz'].s_db[:,0,0]) for ntwrk in wc]
+
+#%%
+wc_min_il = np.min(wc_il)
+print('wc_min_il: ' + str(wc_min_il))
+nom_min_il = np.min(nom_il)
+print('nom_min_il: ' + str(nom_min_il))
+typ_il = np.mean(nom_il)
+print('typ_il: ' + str(typ_il))
+nom_max_il = np.max(nom_il)
+print('nom_max_il: ' + str(nom_max_il))
+wc_max_il = np.max(wc_il)
+print('wc_max_il: ' + str(wc_max_il))
+
+
+#%%
+
+nom_iso = [-1*np.max(ntwrk.iso_out_in['0.01-2.7GHz'].s_db[:,0,0]) for ntwrk in nominal]
+wc_iso = [-1*np.max(ntwrk.iso_out_in['0.01-2.7GHz'].s_db[:,0,0]) for ntwrk in wc]
+
+#%%
+wc_min_iso = np.min(wc_iso)
+print('wc_min_iso: ' + str(wc_min_iso))
+nom_min_iso = np.min(nom_iso)
+print('nom_min_iso: ' + str(nom_min_iso))
+typ_iso = np.mean(nom_iso)
+print('typ_iso: ' + str(typ_iso))
+nom_max_iso = np.max(nom_iso)
+print('nom_max_iso: ' + str(nom_max_iso))
+wc_max_iso = np.max(wc_iso)
+print('wc_max_iso: ' + str(wc_max_iso))
+
+
+

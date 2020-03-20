@@ -1,0 +1,14 @@
+#,setup_header,test_system,Manual,,,
+#,setup_header,version,1,,,
+#,MipiVerification,clusters,,,,
+enabled,type,usid,regAddr,writeMask,regWriteData,expectedReadData
+1,1,6,28,0,64,0
+1,1,6,28,0,56,0
+1,1,6,164,0,238,0
+1,2,6,168,0,0,0
+1,1,6,168,0,255,0
+1,2,6,168,0,0,255
+1,1,6,168,0,0,0
+1,2,6,168,0,0,0
+1,3,6,168,0,255,0
+1,4,6,168,0,0,255
