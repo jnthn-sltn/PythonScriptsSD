@@ -102,7 +102,7 @@ def df_cleaner(df):
 prd_sheet_stand_reg = 'USID8'
 # MMC NOTE
 # prd_file is the excel file where the register maps can be found
-prd_file = r"\\malibu\benchdata\1_Engineers\joslaton\METEOR\Meteor Reg Map PRD.xlsx"
+prd_file = r"****.xlsx"
 # MMC NOTE
 # prd_sheet_ext_reg is the name of the sheet in the excel file
 # where the extended register map can be found.
@@ -110,11 +110,11 @@ prd_sheet_ext_reg = 'Extended'
 # MMC NOTE
 # out_stand_file is the excel file where the machine readable
 # standard register map will be output. Must be a CSV.
-out_stand_file = r"\\malibu\benchdata\1_Engineers\joslaton\METEOR\Meteor_USID8.csv"
+out_stand_file = r"****.csv"
 # MMC NOTE
 # out_ext_file is the excel file where the machine readable
 # extended register map will be output. Must be a CSV.
-out_ext_file = r"\\malibu\benchdata\1_Engineers\joslaton\METEOR\Meteor_Extended.csv"
+out_ext_file = r"****.csv"
 
 # %% 3
 stand_reg_df = pd.read_excel(prd_file,

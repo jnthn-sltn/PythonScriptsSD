@@ -1183,7 +1183,7 @@ a = register_pack_generator(in_file_dir, in_file_stand, in_file_extended)
 
 # MMC NOTE
 # An output directory must be specified
-out_file_dir = 'C:\\Users\\joslaton\\Documents\\MIPI Demo\\Generated\\'
+out_file_dir = 'C:\\Users\\****\\Generated\\'
 # MMC NOTE
 # We should specify our required tests below.
 # If, for instance, there are no timed triggers on the

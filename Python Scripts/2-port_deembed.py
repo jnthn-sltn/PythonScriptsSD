@@ -63,9 +63,9 @@ def copy_comments(fname1, fname2, first_line=True):
             f.writelines(a)
 
 # %% 2
-RF1_Path = r"\\malibu\benchdata\1_Engineers\joslaton\Deembedding_Files\SCOOBY\SCOOBY_DEEMBED_TRY2__1.s2p"
-RF2_Path = r"\\malibu\benchdata\1_Engineers\joslaton\Deembedding_Files\SCOOBY\SCOOBY_DEEMBED_TRY2__2.s2p" 
-DUT_dir = r"C:\Users\joslaton\Documents\S-Params\ES2_DV"
+RF1_Path = r"****"
+RF2_Path = r"****" 
+DUT_dir = r"****"
 
 RF1 = rf.Network(RF1_Path)
 RF2 = rf.Network(RF2_Path)

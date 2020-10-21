@@ -70,8 +70,8 @@ def csv_write_file(a,out):
         csv.writer(f).writerows(a.items())
 
 #%%
-infile = r"\\malibu\benchdata\1_Engineers\joslaton\Zorro DropBox\MIPI_SUB100_spur_hunter_output_ES7_IN1OUT1.csv"
-outfile = r"\\malibu\benchdata\1_Engineers\joslaton\Zorro DropBox\MIPI_SUB100_spur_proc_output_ES7_IN1OUT1.csv"
+infile = r"****.csv"
+outfile = r"****.csv"
 
 
 #%%
@@ -84,9 +84,9 @@ csv_write_file(msrmt_dict,outfile)
 
 
 #%%
-msrmtfile = r"\\malibu\benchdata\1_Engineers\joslaton\Zorro DropBox\RX_spur_proc_output_ext_ES7_IN1OUT1.csv"
-thrufile = r"\\malibu\benchdata\1_Engineers\joslaton\Zorro DropBox\RX_spur_proc_output_ext_THRU_2.csv"
-outfile_2 = r"\\malibu\benchdata\1_Engineers\joslaton\Zorro DropBox\RX_spur_proc_output_ext_ES7_IN1OUT1_deinjected.csv"
+msrmtfile = r"****.csv"
+thrufile = r"****.csv"
+outfile_2 = r"****.csv"
 
 #%%
 msrmt_dict = processed_reloader(msrmtfile)

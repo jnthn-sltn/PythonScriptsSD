@@ -105,12 +105,12 @@ def dub_or_norm(df):
     return (use_mhz, use_ns)
 
 
-src_data_path = r"C:\Users\joslaton\Documents\Kiara_Char_Odd.csv"
+src_data_path = r"****.csv"
 
-src_template_path = r"J:\joslaton\Templates\TEMPLATE_DPA_1p8V_Copy.xlsx"
+src_template_path = r"****.xlsx"
 output_path = src_data_path[:-4] + '_Parametrics_Analysis.xlsx'
 jmp_path = "C:/Program Files/SAS/JMP/13/jmp.exe"
-scrpt_path = r"J:\joslaton\JMP\Digital Char Process-Jon.jsl"
+scrpt_path = r"****.jsl"
 derate = 7
 
 # Here we look at our template and create a copy

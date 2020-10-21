@@ -39,7 +39,7 @@ def spur_finder(src):
         status_tracker(i,ender)
     return d
 
-input_path = r"\\malibu\benchdata\1_Engineers\joslaton\SHIBA\CHAR\RX Spur\Shiba_ASW_RX_Spur_TRACE_DATA"
+input_path = r"****"
 
 #%%
 flist_src = filename_collector(input_path)

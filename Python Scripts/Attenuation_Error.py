@@ -45,8 +45,8 @@ def get_att_db(dut,ref,f):
 
 # %% 2
 
-input_path = r"C:\Users\joslaton\Documents\S-Params\ES2_DV_Deembedded"
-output_path = r"C:\Users\joslaton\Documents\S-Params\Outputs"
+input_path = r"****"
+output_path = r"****"
 
 states = {'LS_CFG(' + str(k) + ')': k/4.0 for k in range(2, 127, 2)}
 

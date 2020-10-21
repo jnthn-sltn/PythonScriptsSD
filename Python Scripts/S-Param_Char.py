@@ -9,7 +9,7 @@ import numpy as np
 import skrf as rf
 import pandas as pd
 
-input_dir = r"\\malibu\benchdata\1_Engineers\joslaton\****\Char\S-Parameters"
+input_dir = r"****\Char\S-Parameters"
 
 states2il_dict = {'LS_ASW_B34_39':2,
                   'LS_ASW_B25_B66':3,

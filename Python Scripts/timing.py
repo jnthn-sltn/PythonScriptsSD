@@ -84,7 +84,7 @@ def linearity_timing_finder(filelist):
     
 
 
-root_dir = r"C:\Users\joslaton\Documents\Albacore SW Time Linearity_TRACE_DATA\3F0\46dBm"
+root_dir = r"****"
 
 flist = filename_collector(root_dir)
 

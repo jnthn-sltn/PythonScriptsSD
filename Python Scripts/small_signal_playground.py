@@ -8,12 +8,12 @@ Created on Wed Apr 10 09:36:36 2019
 import skrf as rf
 import numpy as np
 
-de_embed_string = r"\\malibu\Users\rpandya\WOLF\Wolf_20190225"
+de_embed_string = r"****"
 de_embed_ports = ['TXIN1.s2p','TXIN2.s2p','TXOUT1.s2p','TXOUT2.s2p']
 de_embed_paths = [de_embed_string+'\\'+port for port in de_embed_ports]
 
 
-p_string ='\\\\malibu\\benchdata\\1_Engineers\\joslaton\\WOLF\\WOLF_ES2cpy\\WOLF_Spara\\85C\\'
+p_string ='****'
 paths = [p_string]*12
 states = ['LS_TX_IN1_TX_OUT1_ZEUS_ES2p1_',
           'LS_TX_IN1_TX_OUT2_ZEUS_ES2p1_',

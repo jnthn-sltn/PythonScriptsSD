@@ -7,7 +7,7 @@ Created on Mon Jul 29 15:03:33 2019.
 
 import pandas as pd
 
-src_file = r"\\malibu\benchdata\1_Engineers\joslaton\Zorro DropBox\Sarge_Char_Super.xlsx"
+src_file = r"****.xlsx"
 out_file_seed = src_file.split('.')[0]
 
 src_df = pd.read_excel(src_file, header=0)

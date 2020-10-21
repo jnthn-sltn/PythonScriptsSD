@@ -13,7 +13,7 @@ from psvmodule import get_commands, save_commands
 # %%
 # MMC NOTE
 # We should specify our input files below. USER INPUT GOES HERE.
-in_file = r"\\malibu\benchdata\1_Engineers\joslaton\METEOR\Meteor Reg Map PRD_MRD.csv"
+in_file = r"****.csv"
 # MMC NOTE
 # usid sets the USID used during testing. USER INPUT GOES HERE.
 usid = 8

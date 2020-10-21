@@ -29,7 +29,7 @@ def find_first_last(a_lst):
     return tup_lst
 
 
-src_file = r"C:\Users\joslaton\Downloads\Data_*****_char1_*****02_20190911.csv"
+src_file = r"****"
 out_file_seed = src_file.split('.')[0]
 
 f_lst = []

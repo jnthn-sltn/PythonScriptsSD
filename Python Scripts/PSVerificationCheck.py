@@ -136,14 +136,14 @@ trig_reg_ddict = {'0x1C': {'0x01': 'T0',
                   }
 
 # %%
-rsa_file = r"\\malibu\benchdata\1_Engineers\joslaton\METEOR\Meteor_Tool_Report.csv"
-mrd_file = r"\\malibu\benchdata\1_Engineers\joslaton\METEOR\Meteor Reg Map PRD_MRD.csv"
-result_input = r"\\malibu\benchdata\1_Engineers\joslaton\METEOR\MeteorPSVerResult.csv"
+rsa_file = r"****.csv"
+mrd_file = r"****.csv"
+result_input = r"****.csv"
 
 # %%
 output_seed = result_input.split('.')[0]
 output_path = output_seed + ' Report.xlsx'
-src_template_path = "//malibu/benchdata/1_Engineers/joslaton/Templates/" + \
+src_template_path = "****/Templates/" + \
     "TEMPLATE_Post-Silicon Verification.xlsx"
 
 # %%

@@ -31,7 +31,7 @@ def find_first_last(a_lst):
     return tup_lst
 
 
-src_file = r"\\malibu\benchdata\1_Engineers\joslaton\Zorro DropBox\WOLF_ES7_SKEW.csv"
+src_file = r"****.csv"
 out_file_seed = src_file.split('.')[0]
 
 f_lst = []

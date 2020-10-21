@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 
 #%%       
 
-p_string =r"\\malibu\benchdata\1_Engineers\joslaton\SARGE\CHAR\S-Parameters"
-output_path = r"\\malibu\benchdata\1_Engineers\joslaton\SARGE\CHAR\S-Parameters\ALL"
+p_string =r"****\CHAR\S-Parameters"
+output_path = r"****\CHAR\S-Parameters\ALL"
 
 states = ['LS_ASW_TRX_1_B26',
           'LS_ASW_TRX_2_B8',

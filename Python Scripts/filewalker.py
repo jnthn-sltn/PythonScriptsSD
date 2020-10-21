@@ -105,7 +105,7 @@ def error_corrector(flist_src):
 
 # %%
 
-fdir = r"C:\Users\joslaton\Documents\S-Params\ASW_Inp_A2"
+fdir = r"****"
 flist_src = filename_collector(fdir)
 
 # %%

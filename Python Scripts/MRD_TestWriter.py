@@ -11,7 +11,7 @@ from psvmodule import get_commands, get_register_df, save_commands, save_mrd
 
 # MMC NOTE
 # prd_file is the excel file where the register maps can be found
-prd_file = r"\\malibu\benchdata\1_Engineers\joslaton\****\**** Reg Map PRD.xlsx"
+prd_file = r"****"
 # MMC NOTE
 # prd_sheet_stand_reg is the name of the sheet in the excel file
 # where the standard register map can be found.

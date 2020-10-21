@@ -12,7 +12,7 @@ import os
 
 def filename_collector(fdir):
     a = []
-    for root, dirs, files in os.walk(fdir):  
+    for root, _, files in os.walk(fdir):  
         for filename in files:
             if filename.endswith('v'):
                 a += [root + '\\' +filename]
@@ -44,7 +44,7 @@ def linearity_edge_finder(xf,yf,idx1,idx2,idx3):
 #6468=350
 #7250=400
 
-in_file=r"C:\Users\joslaton\Documents\Albacore SW Time Linearity_TRACE_DATA\2F0\30dBm"
+in_file=r"****"
 flist = filename_collector(in_file)
 onoff_list = []
 offon_list = []

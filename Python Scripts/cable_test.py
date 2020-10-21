@@ -19,7 +19,7 @@ def filename_collector(fdir):
     return a
 
 
-input_directory = r"\\malibu\benchdata\1_Engineers\joslaton\Cables"
+input_directory = r"****"
 
 input_list = filename_collector(input_directory)
 

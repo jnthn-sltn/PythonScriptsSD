@@ -11,7 +11,7 @@ rf.stylely()
 from pylab import *
 
 # load data for the waveguide to CPW probe
-probe = rf.Network(r"\\malibu\benchdata\1_Engineers\joslaton\Deembedding_Files\SCOOBY\SCOOBY_DEEMBED2_BOOGALOO.s2p")
+probe = rf.Network(r"****.s2p")
 
 # %%
 # we will focus on s11

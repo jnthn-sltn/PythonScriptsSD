@@ -11,9 +11,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # %% 1
-RF1_Path = r"\\malibu\benchdata\1_Engineers\joslaton\Deembedding_Files\*****\*****_DEEMBED2_BOOGALOO_1.s2p"
-RF2_Path = r"\\malibu\benchdata\1_Engineers\joslaton\Deembedding_Files\*****\*****_DEEMBED2_BOOGALOO_2.s2p"
-DUTpath = r"\\malibu\benchdata\1_Engineers\joslaton\Zorro DropBox\LS_CFG(0)_SN2_*****_3p30_200318_131929183.s2p"
+RF1_Path = r"****"
+RF2_Path = r"****"
+DUTpath = r"****"
 
 # %% 2
 

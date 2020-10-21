@@ -12,8 +12,8 @@ import matplotlib.pyplot as plt
 
 #%%       
 
-p_string =r"\\malibu\benchdata\1_Engineers\joslaton\****\TURKISH_SKEW\S-Parameters\ES3.1"
-output_path = r"\\malibu\benchdata\1_Engineers\joslaton\****\TURKISH_SKEW\S-Parameters\ES3.1\ALL"
+p_string =r"****\S-Parameters\ES3.1"
+output_path = r"****\S-Parameters\ES3.1\ALL"
 states = ['LS_TX_IN1_TX_OUT1',
           'LS_TX_IN2_TX_OUT1',
           'LS_TX_IN1_TX_OUT2',
