@@ -17,7 +17,7 @@ def uniqueness_tester(a):
 
 def filename_collector(fdir):
     a = []
-    for root, dirs, files in os.walk(fdir):
+    for root, _, files in os.walk(fdir):
         for filename in files:
             a += [root + '\\' + filename]
     return a

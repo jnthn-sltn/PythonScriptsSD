@@ -1,0 +1,43 @@
+For each register:
+    Read/write
+        Test Plan:
+            UDR:
+                if no reserved bits:
+                    Write 0
+                    Check errsum
+                    Read 0
+                    Check errsum
+                    Write 255
+                    Check errsum
+                    Read  255
+                    Check errsum
+                    Write 0
+                    Check errsum
+                    Read 0
+                    Check errsum
+                else:
+                    Write 0
+                    Check errsum
+                    Read 0
+                    Check errsum
+                    Write 255
+                    Check errsum
+                    Read 255|~reserved bitmask
+                    Check errsum
+                    
+            RFFE Reserved:
+                Individual test plan for each
+        Test Failure conditions:
+            Register is not implemented - Caught by filtering. 
+            Register contains reserved bits - Captured by "Reserved bitmask" field
+            All others are real failures. 
+    Trigger functionality:
+        Test Plan:
+            if "Trigger Support":
+                
+    Default state
+    Extended write functionality
+    GSID/BSID functionality
+    MaskedWrite functionality
+    RFFE status register operation
+    Register 0 write

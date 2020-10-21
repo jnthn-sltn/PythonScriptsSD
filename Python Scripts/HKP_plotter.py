@@ -17,8 +17,8 @@ def file_mapper(flist_dst):
 
 
 
-fname = r"\\malibu\benchdata\1_Engineers\joslaton\INU\Char\HKP\HKP.xlsx"
-output_path = r"//malibu/benchdata/1_Engineers/joslaton/INU/Char/HKP/ALL/"
+fname = r"\\malibu\benchdata\1_Engineers\joslaton\*****\Char\HKP\HKP.xlsx"
+output_path = r"//malibu/benchdata/1_Engineers/joslaton/*****/Char/HKP/ALL/"
 
 
 
